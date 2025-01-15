@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "qa-email-ai"
+version = "0.1.0"
+description = ""
+authors = ["dudaborges <duda.pborges92@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain-community = "^0.3.14"
+python-dotenv = "^1.0.1"
+streamlit = "^1.41.1"
+langchain = "^0.3.14"
+taskipy = "^1.14.1"
+langchain-openai = "^0.3.0"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.13.2"
+blue = "^0.9.1"
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.taskipy.tasks]
+lint = "blue . && isort ."
