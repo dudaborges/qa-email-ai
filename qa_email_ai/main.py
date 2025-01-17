@@ -15,9 +15,11 @@ documents = loader.load()
 embeddings = OpenAIEmbeddings()
 db = FAISS.from_documents(documents, embeddings)
 
+
 def retrieve_info(query):
     similar_response = db.similarity_search(query, k=3)
     return [doc.page_content for doc in similar_response]
+
 
 llm = ChatOpenAI(temperature=0, model='gpt-3.5-turbo')
 
@@ -40,20 +42,24 @@ Escreva a melhor resposta que eu deveria enviar para este potencial cliente:
 """
 
 prompt = PromptTemplate(
-    input_variables=['message', 'best_practice'],
-    template=template
+    input_variables=['message', 'best_practice'], template=template
 )
 
 chain = LLMChain(llm=llm, prompt=prompt)
+
+
 def generate_response(message):
     best_practice = retrieve_info(message)
     response = chain.run(message=message, best_practice=best_practice)
     return response
 
-response = generate_response("""
+
+response = generate_response(
+    """
     Olá, boa tarde!
                   
     Encontrei vocês no Google e gostaria de saber mais sobre o que vocês fazem, quais serviços vocês prestam para empresa. Tenho uma empresa de agência de marketing, como vocês poderiam me ajudar?
-""")
+"""
+)
 
 print(response)
