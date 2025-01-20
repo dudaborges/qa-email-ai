@@ -1,4 +1,4 @@
-import json
+import csv
 import os
 
 from dotenv import load_dotenv
@@ -35,5 +35,13 @@ def fetch_database_items():
 
 
 data_amadeus = fetch_database_items()
-with open('./assets/data_amadeus.json', 'w', encoding='utf-8') as json_file:
-  json.dump(data_amadeus, json_file, ensure_ascii=False, indent=4)
+csv_file_path = './assets/data_amadeus.csv'
+csv_headers = ['question', 'response']
+
+try:
+  with open(csv_file_path, mode='w', encoding='utf-8', newline='') as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=csv_headers)
+    writer.writeheader() 
+    writer.writerows(data_amadeus) 
+except Exception as e:
+  print(f'[ERROR] Error writing to CSV: {e}')

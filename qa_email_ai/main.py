@@ -9,7 +9,7 @@ from langchain_community.document_loaders import CSVLoader
 
 load_dotenv()
 
-loader = CSVLoader(file_path='./assets/amadeus_dados.csv')
+loader = CSVLoader(file_path='./assets/data_amadeus.csv')
 documents = loader.load()
 
 embeddings = OpenAIEmbeddings()

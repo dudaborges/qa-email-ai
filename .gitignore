@@ -3,6 +3,7 @@
 
 ### Python ###
 # assets
+assets/
 data_amadeus.json
 amadeus_dados.csv
 
