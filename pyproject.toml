@@ -15,7 +15,7 @@ taskipy = "^1.14.1"
 langchain-openai = "^0.3.0"
 faiss-cpu = "^1.9.0.post1"
 notion-client = "^2.3.0"
-pytest = "^8.3.4"
+imbox = "^0.9.8"
 
 
 [tool.poetry.group.dev.dependencies]
