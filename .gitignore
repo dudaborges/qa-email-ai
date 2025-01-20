@@ -2,6 +2,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
 ### Python ###
+# assets
+data_amadeus.json
+amadeus_dados.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

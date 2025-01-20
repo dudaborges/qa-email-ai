@@ -28,12 +28,12 @@ def fetch_database_items():
 
       result = {'question': question, 'response': response_question}
       data_amadeus.append(result)
-
-      return data_amadeus
+  
+    return data_amadeus
   except Exception as e:
     print(f'[ERROR] Error fetching data from the database: {e}')
 
 
 data_amadeus = fetch_database_items()
-with open('data_amadeus.json', 'w', encoding='utf-8') as json_file:
+with open('./assets/data_amadeus.json', 'w', encoding='utf-8') as json_file:
   json.dump(data_amadeus, json_file, ensure_ascii=False, indent=4)
