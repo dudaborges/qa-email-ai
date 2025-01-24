@@ -53,20 +53,6 @@ chain = LLMChain(llm=llm, prompt=prompt)
 def generate_response(name, subject, body):
     best_practice = retrieve_info(body)
     response = chain.run(
-    name=name, subject=subject, 
-    message=body, best_practice=best_practice
+        name=name, subject=subject, message=body, best_practice=best_practice
     )
     return response
-
-
-# response = generate_response(
-#     name='Julia Silva',
-#     subject='Quais são seus serviços?',
-#     body= """
-    # Olá, boa tarde!
-                  
-    # Encontrei vocês no Google e gostaria de saber mais sobre o que vocês fazem, quais serviços vocês prestam para empresa. Tenho uma empresa de agência de marketing, como vocês poderiam me ajudar?
-#     """
-# )
-
-# print(response)

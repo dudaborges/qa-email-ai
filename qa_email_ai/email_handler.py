@@ -1,11 +1,11 @@
 import os
+import smtplib
+from datetime import datetime
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 from dotenv import load_dotenv
 from imbox import Imbox
-from datetime import datetime
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
 
 load_dotenv()
 
@@ -28,13 +28,17 @@ def get_emails():
         )
 
         for uid, message in unread_messages:
-            name = message.sent_from[0]["name"]
-            email = message.sent_from[0]["email"]
+            name = message.sent_from[0]['name']
+            email = message.sent_from[0]['email']
             subject = message.subject
-            body = message.body["plain"][0]
+            body = message.body['plain'][0]
 
             email = {
-            'id': uid, 'name': name, 'email': email, 'subject': subject, 'body': body
+                'id': uid,
+                'name': name,
+                'email': email,
+                'subject': subject,
+                'body': body,
             }
 
             emails.append(email)
@@ -55,6 +59,6 @@ def send_email(to_email, subject, body):
             msg.attach(MIMEText(body, 'plain'))
 
             server.send_message(msg)
-            print(f"E-mail enviado com sucesso para {to_email}")
+            print(f'E-mail enviado com sucesso para {to_email}')
     except Exception as e:
         print(f'[ERROR] Error sending email to {to_email}: {e}')
